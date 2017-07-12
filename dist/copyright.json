@@ -1,0 +1,17 @@
+{
+  "project_name": "Nery",
+  "author": "Nuno Fernandes",
+  "agency": "Growingdesign",
+  "website": "http://growingdesign.pt",
+  "email": "nunofernandes@growingdesign.pt",
+
+  "js": {
+    "info": "All plugins information are commented above the plugin code.",
+    "version": "0.0.1"
+  },
+  "css": {
+    "version": "0.0.1",
+    "info": ""
+  }
+
+}

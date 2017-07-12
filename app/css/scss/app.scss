@@ -1,0 +1,359 @@
+
+//mixins
+@import '_mixins';
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+body{
+  background: #090909;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  //overflow: hidden;
+
+}
+
+.carousel,
+.carousel-inner,
+.carousel-inner .item {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  z-index: 1;
+}
+
+.carousel-fade {
+  z-index: 0;
+  .carousel-inner {
+    .item {
+      transition-property: opacity;
+    }
+
+    .item,
+    .active.left,
+    .active.right {
+      opacity: 0;
+    }
+
+    .active,
+    .next.left,
+    .prev.right {
+      opacity: 1;
+    }
+
+    .next,
+    .prev,
+    .active.left,
+    .active.right {
+      left: 0;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .carousel-control {
+    z-index: 2;
+  }
+}
+
+.section{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  float: left;
+  min-height: 1000px;
+}
+
+.landing{
+  opacity: 1;
+  @include transition(1s);
+  transform: translateY(100px);
+  &.shown{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.new-album-section{
+  background: #121212;
+  z-index: 5;
+  padding-bottom: 50px;
+  @include transition(1s);
+
+  #youtube-iframe{
+    position: relative;
+    display: block;
+    margin: auto;
+    max-width: 1100px;
+    width: 100%;
+    height: 700px;
+  }
+
+  &.slideHide{
+    display: none;
+  }
+
+
+  .album-name{
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 70px;
+    padding: 30px 0px;
+  }
+  .logos{
+    text-align: center;
+    margin-top: 30px;
+    img{
+      max-width: 600px;
+
+    }
+
+  }
+  
+  .where-to-buy{
+    text-align: center;
+    max-width: 900px;
+    display: block;
+    margin: 30px auto;
+
+    h1{
+      color: #fff;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 25px;
+    }
+    ul{
+      text-align: center;
+      list-style: none;
+      li{
+        display: inline-block;
+        vertical-align: middle;
+        margin:15px 10px;
+        a{
+          @include transition(0.5s);
+
+          font-weight: 900;
+          text-transform: uppercase;
+          font-size: 20px;
+          padding: 5px 10px;
+          border: 3px solid #fff;
+          color: #fff;
+
+          &:hover{
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+
+  .booking-link{
+    color: #fff;
+    text-align: center;
+    position: relative;
+    display: block;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 20px;
+    padding: 60px 0px;
+  }
+
+  .logo-links{
+    padding: 80px 0px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    float: left;
+    a{
+      padding: 0px 30px;
+    }
+    img{
+      display: inline-block;
+      vertical-align: middle;
+      height: 90px;
+    }
+  }
+
+
+}
+
+.content-social-links{
+  position: absolute;
+  z-index: 2;
+  width: 400px;
+  left:50%;
+  margin-left: -200px;
+  top:20px;
+  ul{
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    li{
+      list-style: none;
+      display:inline-block;
+      vertical-align: middle;
+      a{
+        font-size:20px;
+        padding: 0px 20px;
+        color: #fff;
+        &:hover{
+          color: #fff;
+          opacity: 0.8;
+        }
+
+      }
+    }
+  }
+}
+
+.top-gradient{
+  @include transition(1s);
+  z-index: 4;
+  position: absolute;
+  top: 0;
+  height: 250px;
+  width: 100%;
+
+  background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgb(18,18,18) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgb(18,18,18) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgb(18,18,18) 100%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(255, 255, 255, 0)), color-stop(100, rgb(18,18,18)));
+  background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgb(18,18,18) 100%);
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgb(18,18,18) 100%);
+  z-index: 1;
+}
+.bottom-bar{
+  @include transition(1s);
+  z-index: 4;
+  position: absolute;
+  bottom: 0;
+  height: 250px;
+  width: 100%;
+  @include background-gradient(transparent, #121212);
+  visibility: hidden;
+
+  &.show{
+    visibility: visible;
+  }
+}
+.sc-player{
+  display: none;
+}
+.content-controls{
+  position: fixed;
+  width: 250px;
+  height: 40px;
+  bottom: 50px;
+  left: 50%;
+  z-index: 3;
+  margin-left: -125px;
+  text-align: center;
+  @include transition(1s);
+
+  .forward, .play_pause, .backward{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0px 20px;
+    font-size: 27px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    @include transition(0.1s);
+    &:hover{
+      opacity: 0.7;
+      color: #ff564c;
+    }
+  }
+}
+.content-details{
+  position: fixed;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  bottom: 20px;
+  opacity: 0;
+  z-index: 3;
+  @include transition(1s);
+
+  h1{
+    font-size: 11px;
+    font-weight:200;
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+
+  .cover{
+    margin: auto;
+    height: 100px;
+    width: 100px;
+    position: relative;
+    display: block;
+    padding-bottom: 10px;
+    img{
+      width: 100%;
+      position: relative;
+      opacity: 0.7;
+    }
+    .fa{
+      z-index: 3;
+      position: absolute;
+      color: #fff;
+      text-align: center;
+      width: 100%;
+      font-size:50px;
+      margin-top: 20px;
+    }
+  }
+}
+.content-time{
+  position: fixed;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  bottom: 25px;
+  z-index: 3;
+  @include transition(1s);
+  font-size: 10px;
+  opacity: 0.5;
+}
+.bottom-bar:hover{
+  height: 400px;
+}
+.bottom-bar:hover .content-time{
+  bottom: 40px;
+}
+.bottom-bar:hover .content-details{
+  bottom: 130px;
+  opacity: 1;
+}
+.bottom-bar:hover .content-controls{
+  bottom: 70px;
+}
+.bottom-bar:hover .content-progress-bar {
+  height: 200px;
+  .progress-bar{
+    opacity: 0.3;
+
+  }
+}
+.content-progress-bar{
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  @include transition(1s);
+
+  .progress-bar{
+    @include background-gradient(transparent, #ff564c);
+    position: absolute;
+    bottom: 0;
+    opacity: 0.2;
+    width: 0%;
+    border-right: 1px #fff solid;
+    @include transition(0.3s);
+
+  }
+}
